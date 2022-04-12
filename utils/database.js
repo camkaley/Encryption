@@ -14,7 +14,7 @@ const insert = (dbName, coll, item) => {
 };
 
 const read = (dbName, coll, query) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
       var dbo = db.db(dbName);
@@ -22,9 +22,11 @@ const read = (dbName, coll, query) => {
         .collection(coll)
         .find(query)
         .toArray(function (err, result) {
-          if (err) throw err;
+          if (err){
+            reject(err)
+          }
           db.close();
-          resolve(result)
+          resolve(result);
         });
     });
   });
