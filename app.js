@@ -16,7 +16,7 @@ app.post("/login", (req, res) => {
       username: req.body.username.toLowerCase(),
     })
       .then((result) => {
-        if (decrypt(result[0].password) === req.body.password) {
+        if (result.length && decrypt(result[0].password) === req.body.password) {
           res.sendStatus(200);
         } else {
           res.sendStatus(404);
