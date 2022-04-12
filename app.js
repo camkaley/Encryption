@@ -34,7 +34,7 @@ app.post("/login", (req, res) => {
 app.post("/register", (req, res) => {
   if ("username" in req.body && "password" in req.body) {
     read(process.env.DBNAME, process.env.DBCOLL, {
-      username: req.body.username,
+      username: req.body.username.toLowerCase(),
     })
       .then((result) => {
         if (result.length) {
