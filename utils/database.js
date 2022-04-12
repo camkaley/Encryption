@@ -1,5 +1,5 @@
 var MongoClient = require("mongodb").MongoClient;
-var url = process.env.dburl;
+var url = process.env.DBURL;
 
 const insert = (dbName, coll, item) => {
   MongoClient.connect(url, function (err, db) {

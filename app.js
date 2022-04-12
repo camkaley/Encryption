@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
   if ("username" in req.body && "password" in req.body) {
-    read(process.env.dbName, process.env.dbColl, {
+    read(process.env.DBNAME, process.env.DBCOLL, {
       username: req.body.username.toLowerCase(),
     })
       .then((result) => {
@@ -33,7 +33,7 @@ app.post("/login", (req, res) => {
 
 app.post("/register", (req, res) => {
   if ("username" in req.body && "password" in req.body) {
-    read(process.env.dbName, process.env.dbColl, {
+    read(process.env.DBNAME, process.env.DBCOLL, {
       username: req.body.username,
     })
       .then((result) => {
@@ -44,7 +44,7 @@ app.post("/register", (req, res) => {
             validateString(req.body.username) &&
             validateString(req.body.password)
           ) {
-            insert(process.env.dbName, process.env.dbColl, {
+            insert(process.env.DBNAME, process.env.DBCOLL, {
               username: req.body.username.toLowerCase(),
               password: encrypt(req.body.password),
             });
