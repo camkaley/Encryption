@@ -4,11 +4,15 @@ const { encrypt, decrypt } = require("./utils/cryptography");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { response } = require("express");
+var cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 app.post("/login", (req, res) => {
   if ("username" in req.body && "password" in req.body) {
