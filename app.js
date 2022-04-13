@@ -89,7 +89,7 @@ app.post("/generate", (req, res) => {
       code: code,
       valid: true,
     });
-    res.sendStatus(200);
+    res.status(200).send({code: code});
   } else {
     res.sendStatus(400);
   }
