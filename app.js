@@ -11,7 +11,7 @@ const port = 4000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: '*'
 }));
 
 app.post("/login", (req, res) => {
